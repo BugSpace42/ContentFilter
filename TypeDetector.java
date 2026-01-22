@@ -4,23 +4,16 @@ public class TypeDetector {
             return "String";
         }
         String trimmed = value.trim();
-
-        // Проверка на Boolean
-        if (isBoolean(trimmed)) return "Boolean";
         
         // Проверка на Integer
         if (isInteger(trimmed)) return "Integer";
 
         // Проверка на Long
-        if (isLong(trimmed)) return "Long";
+        if (isLong(trimmed)) return "Integer";
         
-        // Проверка на Double/Float
-        if (isDouble(trimmed)) return "Double";
+        // Проверка на Float
+        if (isFloat(trimmed)) return "Float";
         return "String";
-    }
-    
-    private static boolean isBoolean(String str) {
-        return str.equalsIgnoreCase("true") || str.equalsIgnoreCase("false");
     }
 
     private static boolean isInteger(String str) {
@@ -41,9 +34,9 @@ public class TypeDetector {
         }
     }
     
-    private static boolean isDouble(String str) {
+    private static boolean isFloat(String str) {
         try {
-            Double.parseDouble(str);
+            Float.parseFloat(str);
             // Убедимся, что это действительно дробное число
             return str.matches("-?\\d*\\.\\d+([eE][+-]?\\d+)?") || 
                    str.matches("-?\\d+[eE][+-]?\\d+");
