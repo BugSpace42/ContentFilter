@@ -1,19 +1,19 @@
 public class TypeDetector {
-    public static String detectType(String value) {
+    public static DataType detectType(String value) {
         if (value == null || value.trim().isEmpty()) {
-            return "String";
+            return DataType.STRING;
         }
         String trimmed = value.trim();
         
         // Проверка на Integer
-        if (isInteger(trimmed)) return "Integer";
+        if (isInteger(trimmed)) return DataType.INTEGER;
 
         // Проверка на Long
-        if (isLong(trimmed)) return "Integer";
+        if (isLong(trimmed)) return DataType.INTEGER;
         
         // Проверка на Float
-        if (isFloat(trimmed)) return "Float";
-        return "String";
+        if (isFloat(trimmed)) return DataType.FLOAT;
+        return DataType.STRING;
     }
 
     private static boolean isInteger(String str) {

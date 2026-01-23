@@ -21,10 +21,10 @@ public class ContentFilter {
             String line;
             while ((line = reader.readLine()) != null) {
                 System.out.println(line);
-                String lineType = TypeDetector.detectType(line);
+                DataType lineType = TypeDetector.detectType(line);
                 System.out.println(lineType);
                 switch (lineType) {
-                    case "Integer" -> {
+                    case INTEGER -> {
                         if (fileInteger == null) {
                             fileInteger = Files.newBufferedWriter(
                                 Paths.get("integers.txt"), 
@@ -34,7 +34,7 @@ public class ContentFilter {
                         }
                         fileInteger.write(line + "\n");
                     }
-                    case "Float" -> {
+                    case FLOAT -> {
                         if (fileFloat == null) {
                             fileFloat = Files.newBufferedWriter(
                                 Paths.get("floats.txt"), 
@@ -44,7 +44,7 @@ public class ContentFilter {
                         }
                         fileFloat.write(line + "\n");
                     }
-                    case "String" -> {
+                    case STRING -> {
                         if (fileString == null) {
                             fileString = Files.newBufferedWriter(
                                 Paths.get("strings.txt"), 
