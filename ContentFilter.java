@@ -12,12 +12,14 @@ public class ContentFilter {
                 Paths.get(inputFileName), 
                 StandardCharsets.UTF_8);
             FileManager fileManager = new FileManager()) {
-        
+            Statistics statistics = new Statistics();
             String line;
             while ((line = reader.readLine()) != null) {
-                System.out.println(line);
+                System.out.println(line); // Проверка строки
                 DataType lineType = TypeDetector.detectType(line);
-                System.out.println(lineType);
+                System.out.println(lineType); // Проверка типа
+                statistics.addValue(line, lineType);
+                System.out.println(statistics.shortStatistics(lineType)); // Проверка статистики
                 fileManager.writeLine(lineType, line);
             }
             fileManager.close();
